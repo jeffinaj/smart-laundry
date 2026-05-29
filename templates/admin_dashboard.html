@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="dashboard-app admin-dashboard">
+    <div class="dashboard-top">
+      <div class="dashboard-header">
+        <div>
+          <p class="eyebrow">Admin Console</p>
+          <h1>Welcome back, <span id="admin-name">{{ admin_name or 'Administrator' }}</span></h1>
+          <p class="dashboard-subtitle">Manage users, orders, revenue, and service offerings from one central panel.</p>
+        </div>
+        <button id="refresh-dashboard" data-refresh-orders class="button button-secondary">Refresh</button>
+        <a href="{{ url_for('admin_logout') }}" class="button button-secondary">Logout</a>
+      </div>
+
+      <div class="dashboard-stats-grid">
+        <article class="stat-card">
+          <p class="stat-label">Total revenue</p>
+          <h2 id="stat-revenue">{{ "%.2f"|format(total_revenue or 0.0) }}</h2>
+          <span>Income from laundry orders</span>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Total orders</p>
+          <h2 id="stat-orders">{{ total_orders or 0 }}</h2>
+          <span>Orders processed in the system</span>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Total users</p>
+          <h2 id="stat-users">{{ total_users or 0 }}</h2>
+          <span>Registered customers</span>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Pending pickup</p>
+          <h2 id="stat-pending">{{ pending_payments or 0 }}</h2>
+          <span>Orders awaiting collection</span>
+        </article>
+      </div>
+    </div>
+
+    <div class="admin-grid">
+      <section class="card users-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Customer directory</h2>
+            <p>View all registered users and delete accounts as needed.</p>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Joined</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card orders-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Orders management</h2>
+            <p>Track every order and update status directly.</p>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body" data-orders-container></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <section class="card services-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Service catalog</h2>
+          <p>Create, edit, and delete laundry services available to customers.</p>
+        </div>
+      </div>
+      <div class="service-grid">
+        <div class="service-list card">
+          <h3>Current services</h3>
+          <div class="table-scroll">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Express</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="services-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="service-form card">
+          <h3 id="service-form-title">Add new service</h3>
+          <form id="service-form" class="booking-form">
+            <input type="hidden" id="service-id" />
+            <label>
+              Service name
+              <input type="text" id="service-name" class="form-control" required />
+            </label>
+            <label>
+              Description
+              <textarea id="service-description" class="form-control"></textarea>
+            </label>
+            <label>
+              Base price
+              <input type="number" step="0.01" id="service-price" class="form-control" required />
+            </label>
+            <label>
+              Express multiplier
+              <input type="number" step="0.05" id="service-multiplier" class="form-control" value="1.25" required />
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="button">Save service</button>
+              <button id="service-reset" type="button" class="button button-secondary">Reset</button>
+            </div>
+            <p id="service-message" class="form-message"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="card payments-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Payment transactions</h2>
+          <p>Monitor all customer payments and transaction status.</p>
+        </div>
+      </div>
+      <div class="payments-summary">
+        <div class="payment-stat">
+          <p>Total Payments</p>
+          <h3 id="admin-total-payments">0</h3>
+        </div>
+        <div class="payment-stat">
+          <p>Total Collected</p>
+          <h3 id="admin-total-collected">$0.00</h3>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="payments-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="card quick-actions-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Quick Actions</h2>
+          <p>Navigate to key admin tools</p>
+        </div>
+      </div>
+      <div class="action-grid">
+        <a href="/analytics" class="action-button">
+          <span class="action-icon">📊</span>
+          <span class="action-text">View Analytics</span>
+        </a>
+        <a href="/admin/dashboard" class="action-button">
+          <span class="action-icon">🔄</span>
+          <span class="action-text">Refresh Data</span>
+        </a>
+      </div>
+    </section>
+  </section>
+
+  <script src="/static/js/admin.js"></script>
+{% endblock %}

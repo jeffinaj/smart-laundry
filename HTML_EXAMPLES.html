@@ -1,0 +1,571 @@
+<!-- Smart Laundry System - CSS Implementation Examples -->
+<!-- These examples show how to use the CSS styling in your HTML templates -->
+
+<!-- ========================================
+     1. DASHBOARD LAYOUT EXAMPLE
+     ======================================== -->
+
+<div class="app-shell">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand">🏠 Smart Laundry</div>
+    <nav class="top-nav">
+      <button class="button btn-ghost">Help</button>
+      <button class="button">Sign Out</button>
+    </nav>
+  </header>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">🧺</div>
+      <div class="sidebar-title">Laundry</div>
+    </div>
+    <nav class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="#" class="sidebar-nav-link active">
+          <span class="sidebar-nav-icon">📊</span>
+          <span class="sidebar-nav-text">Dashboard</span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-icon">📦</span>
+          <span class="sidebar-nav-text">Orders</span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-icon">💳</span>
+          <span class="sidebar-nav-text">Payments</span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#" class="sidebar-nav-link">
+          <span class="sidebar-nav-icon">🔔</span>
+          <span class="sidebar-nav-text">Notifications</span>
+          <span class="badge">3</span>
+        </a>
+      </li>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="page-content">
+    <div class="dashboard-shell">
+      <!-- Dashboard Header -->
+      <div class="dashboard-top">
+        <div class="dashboard-header">
+          <div>
+            <h1>Welcome Back</h1>
+            <p class="dashboard-subtitle">Here's what's happening with your laundry today</p>
+          </div>
+          <button class="button">📊 Generate Report</button>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="dashboard-stats-grid">
+          <div class="stat-card">
+            <p class="stat-label">Active Orders</p>
+            <h2>12</h2>
+            <span class="text-gray">2 new today</span>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Total Spent</p>
+            <h2>₹2,450</h2>
+            <span class="text-gray">This month</span>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Completed</p>
+            <h2>48</h2>
+            <span class="text-gray">All time</span>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Avg Rating</p>
+            <h2>4.8/5</h2>
+            <span class="text-gray">Based on 24 reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="dashboard-grid">
+        <!-- Orders Table -->
+        <div class="card">
+          <div class="panel-header">
+            <div>
+              <h2>Recent Orders</h2>
+              <p>Your last 5 orders</p>
+            </div>
+            <a href="#" class="button btn-sm btn-ghost">View All →</a>
+          </div>
+
+          <div class="orders-table-wrapper">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Service</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#ORD-001</td>
+                  <td>Standard Wash</td>
+                  <td>May 15, 2026</td>
+                  <td>₹250</td>
+                  <td>
+                    <span class="order-status status-completed">✓ Completed</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#ORD-002</td>
+                  <td>Express Wash</td>
+                  <td>May 14, 2026</td>
+                  <td>₹400</td>
+                  <td>
+                    <span class="order-status status-processing">⟳ Processing</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#ORD-003</td>
+                  <td>Dry Clean</td>
+                  <td>May 13, 2026</td>
+                  <td>₹600</td>
+                  <td>
+                    <span class="order-status status-completed">✓ Completed</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+          <h2 style="margin-top: 0; margin-bottom: 1.5rem;">Quick Actions</h2>
+          <div class="quick-actions">
+            <a href="#" class="action-link">📋 New Order</a>
+            <a href="#" class="action-link">🚗 Track Order</a>
+            <a href="#" class="action-link">💳 Payment History</a>
+            <a href="#" class="action-link">⚙️ Settings</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div class="dashboard-bottom">
+        <div class="card">
+          <h2 style="margin-top: 0; margin-bottom: 1.5rem;">📢 Recent Notifications</h2>
+          <ul class="notification-list">
+            <li class="notification-item unread">
+              <p><strong>Order Ready for Pickup</strong></p>
+              <p>Your order #ORD-001 is ready!</p>
+              <span>2 hours ago</span>
+            </li>
+            <li class="notification-item">
+              <p><strong>Payment Confirmed</strong></p>
+              <p>₹250 payment processed successfully</p>
+              <span>1 day ago</span>
+            </li>
+            <li class="notification-item">
+              <p><strong>Service Update</strong></p>
+              <p>New express laundry service available</p>
+              <span>2 days ago</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<!-- ========================================
+     2. FORM EXAMPLE
+     ======================================== -->
+
+<div class="page-content">
+  <div class="auth-card">
+    <h1>Book Laundry Service</h1>
+    <p>Fill out the form below to book our service</p>
+
+    <form class="booking-form">
+      <!-- Text Input -->
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="John Doe" required>
+        <span class="form-error">Name is required</span>
+      </div>
+
+      <!-- Email Input -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="john@example.com" required>
+        <span class="form-success">Email is valid</span>
+      </div>
+
+      <!-- Phone Input -->
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="+91 9876543210" required>
+      </div>
+
+      <!-- Date Input -->
+      <div class="form-group">
+        <label for="date">Preferred Pickup Date</label>
+        <input type="date" id="date" required>
+      </div>
+
+      <!-- Select Dropdown -->
+      <div class="form-group">
+        <label for="service">Service Type</label>
+        <select id="service" required>
+          <option value="">Select a service</option>
+          <option value="standard">Standard Wash</option>
+          <option value="express">Express Wash</option>
+          <option value="dry-clean">Dry Clean</option>
+          <option value="iron">Iron & Fold</option>
+        </select>
+      </div>
+
+      <!-- Textarea -->
+      <div class="form-group">
+        <label for="notes">Special Instructions</label>
+        <textarea id="notes" placeholder="Any special care instructions..."></textarea>
+      </div>
+
+      <!-- Price Summary -->
+      <div class="price-summary">
+        Estimated Cost: <strong>₹299</strong>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="button" class="button button-secondary">Cancel</button>
+        <button type="submit" class="button btn-success btn-lg">Book Now</button>
+      </div>
+
+      <div class="booking-message"></div>
+    </form>
+  </div>
+</div>
+
+
+<!-- ========================================
+     3. PAYMENT CHECKOUT EXAMPLE
+     ======================================== -->
+
+<div class="page-content">
+  <div class="checkout-container">
+    <!-- Payment Summary -->
+    <div class="payment-summary">
+      <h2>Order Summary</h2>
+
+      <div class="summary-content">
+        <div class="summary-item">
+          <span>Standard Wash (2 items)</span>
+          <span>₹250</span>
+        </div>
+        <div class="summary-item">
+          <span>Express Delivery</span>
+          <span>₹50</span>
+        </div>
+        <div class="summary-item">
+          <span>Discount (Spring Offer)</span>
+          <span>-₹25</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="summary-total">
+        <span>Total Amount</span>
+        <strong>₹275</strong>
+      </div>
+
+      <button class="button btn-full" style="margin-top: 1rem;">Proceed to Payment</button>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="payment-methods">
+      <h2>Select Payment Method</h2>
+
+      <form class="payment-form">
+        <!-- UPI Option -->
+        <div class="method-option">
+          <input type="radio" id="upi" name="method" value="upi" checked>
+          <label for="upi" class="method-label">
+            <span class="method-icon">📱</span>
+            <div class="method-details">
+              <h3>UPI Payment</h3>
+              <p>Google Pay, PhonePe, or Paytm</p>
+            </div>
+          </label>
+        </div>
+
+        <div class="upi-fields">
+          <label>UPI ID</label>
+          <input type="text" class="form-control" placeholder="yourname@upi">
+          <p class="form-note">You will be redirected to your UPI app</p>
+        </div>
+
+        <!-- Credit Card Option -->
+        <div class="method-option">
+          <input type="radio" id="card" name="method" value="card">
+          <label for="card" class="method-label">
+            <span class="method-icon">💳</span>
+            <div class="method-details">
+              <h3>Credit / Debit Card</h3>
+              <p>Visa, Mastercard, or RuPay</p>
+            </div>
+          </label>
+        </div>
+
+        <!-- Bank Transfer Option -->
+        <div class="method-option">
+          <input type="radio" id="bank" name="method" value="bank">
+          <label for="bank" class="method-label">
+            <span class="method-icon">🏦</span>
+            <div class="method-details">
+              <h3>Bank Transfer</h3>
+              <p>Direct transfer to our account</p>
+            </div>
+          </label>
+        </div>
+
+        <!-- Wallet Option -->
+        <div class="method-option">
+          <input type="radio" id="wallet" name="method" value="wallet">
+          <label for="wallet" class="method-label">
+            <span class="method-icon">👛</span>
+            <div class="method-details">
+              <h3>Wallet</h3>
+              <p>Use your Laundry wallet balance</p>
+            </div>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="button button-secondary btn-full">Cancel</button>
+          <button type="submit" class="button btn-success btn-full">Confirm Payment</button>
+        </div>
+
+        <div class="form-message"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========================================
+     4. ALERT & NOTIFICATION EXAMPLES
+     ======================================== -->
+
+<!-- Success Alert -->
+<div class="alert alert-success">
+  <div class="alert-icon">✓</div>
+  <div class="alert-content">
+    <div class="alert-title">Payment Successful</div>
+    <p class="alert-message">Your order #ORD-123 has been confirmed</p>
+  </div>
+</div>
+
+<!-- Info Alert -->
+<div class="alert alert-info">
+  <div class="alert-icon">ℹ️</div>
+  <div class="alert-content">
+    <div class="alert-title">Free Shipping Available</div>
+    <p class="alert-message">Orders above ₹500 get free delivery this week</p>
+  </div>
+  <button class="alert-close">×</button>
+</div>
+
+<!-- Warning Alert -->
+<div class="alert alert-warning">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-content">
+    <div class="alert-title">Scheduled Maintenance</div>
+    <p class="alert-message">Our service will be unavailable on May 20, 2026</p>
+  </div>
+</div>
+
+<!-- Error Alert -->
+<div class="alert alert-danger">
+  <div class="alert-icon">✕</div>
+  <div class="alert-content">
+    <div class="alert-title">Payment Failed</div>
+    <p class="alert-message">Unable to process your payment. Please try again</p>
+  </div>
+  <button class="alert-close">×</button>
+</div>
+
+<!-- Toast Notification -->
+<div class="notification-toast show success">
+  ✓ Order booked successfully!
+</div>
+
+<!-- Notification Center -->
+<div class="notification-center open">
+  <div class="notification-center-content">
+    <div class="center-notification-item unread">
+      <div class="item-title">Order Ready</div>
+      <div class="item-message">Your order #ORD-001 is ready for pickup</div>
+      <div class="item-time">2 hours ago</div>
+    </div>
+    <div class="center-notification-item">
+      <div class="item-title">Payment Confirmed</div>
+      <div class="item-message">₹250 payment processed successfully</div>
+      <div class="item-time">1 day ago</div>
+    </div>
+  </div>
+  <div class="center-footer">
+    <a href="#">View All Notifications →</a>
+  </div>
+</div>
+
+
+<!-- ========================================
+     5. MODAL & TABS EXAMPLES
+     ======================================== -->
+
+<!-- Modal Example -->
+<div class="modal-overlay open">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Confirm Order Cancellation</h2>
+      <button class="modal-close">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to cancel order #ORD-123?</p>
+      <p>You will receive a refund within 2-3 business days.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="button button-secondary">Keep Order</button>
+      <button class="button btn-danger">Cancel Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tabs Example -->
+<div>
+  <div class="tabs">
+    <button class="tab active" data-tab="orders">Active Orders</button>
+    <button class="tab" data-tab="history">Order History</button>
+    <button class="tab" data-tab="favorites">Saved Services</button>
+  </div>
+
+  <div class="tab-content active" id="orders">
+    <p>Your active orders will appear here</p>
+  </div>
+  <div class="tab-content" id="history">
+    <p>Your past orders will appear here</p>
+  </div>
+  <div class="tab-content" id="favorites">
+    <p>Your favorite services will appear here</p>
+  </div>
+</div>
+
+
+<!-- ========================================
+     6. CARDS & COMPONENTS EXAMPLES
+     ======================================== -->
+
+<!-- Service Cards Grid -->
+<div class="cards-grid">
+  <div class="card clickable">
+    <h3>🧺 Standard Wash</h3>
+    <p>Regular washing with care</p>
+    <div style="margin-top: 1rem;">
+      <span class="badge badge-primary">₹250</span>
+    </div>
+    <button class="button btn-sm" style="margin-top: 1rem;">Book Now</button>
+  </div>
+
+  <div class="card clickable">
+    <h3>⚡ Express Wash</h3>
+    <p>Same day delivery available</p>
+    <div style="margin-top: 1rem;">
+      <span class="badge badge-success">₹400</span>
+    </div>
+    <button class="button btn-sm" style="margin-top: 1rem;">Book Now</button>
+  </div>
+
+  <div class="card clickable">
+    <h3>✨ Dry Clean</h3>
+    <p>Premium dry cleaning service</p>
+    <div style="margin-top: 1rem;">
+      <span class="badge badge-warning">₹600</span>
+    </div>
+    <button class="button btn-sm" style="margin-top: 1rem;">Book Now</button>
+  </div>
+</div>
+
+<!-- Status Indicators -->
+<div style="display: grid; gap: 1rem;">
+  <span class="status-indicator status-active">● Active</span>
+  <span class="status-indicator status-pending">● Pending</span>
+  <span class="status-indicator status-inactive">● Inactive</span>
+</div>
+
+<!-- Progress Bar -->
+<div>
+  <div class="progress-text">
+    <span>Order Status</span>
+    <span>75%</span>
+  </div>
+  <div class="progress">
+    <div class="progress-bar" style="width: 75%"></div>
+  </div>
+</div>
+
+<!-- Rating Component -->
+<div class="rating">
+  <span class="star active">★</span>
+  <span class="star active">★</span>
+  <span class="star active">★</span>
+  <span class="star active">★</span>
+  <span class="star empty">★</span>
+  <span style="margin-left: 0.5rem;">4.0/5.0 (120 reviews)</span>
+</div>
+
+
+<!-- ========================================
+     7. UTILITY CLASSES EXAMPLES
+     ======================================== -->
+
+<!-- Spacing Examples -->
+<div class="m-2 p-3">Margin and padding applied</div>
+<div class="mx-auto" style="width: 300px;">Centered with auto margin</div>
+
+<!-- Flexbox Examples -->
+<div class="flex flex-between">
+  <span>Left</span>
+  <span>Right</span>
+</div>
+
+<div class="flex-center" style="height: 100px; background: #f0f0f0;">
+  Centered content
+</div>
+
+<!-- Grid Examples -->
+<div class="grid grid-cols-3 gap-2">
+  <div class="card">Column 1</div>
+  <div class="card">Column 2</div>
+  <div class="card">Column 3</div>
+</div>
+
+<!-- Text Utilities -->
+<h1 class="text-2xl font-bold text-primary">Heading</h1>
+<p class="text-sm text-gray uppercase">Small uppercase label</p>
+
+<!-- Responsive Utilities -->
+<div class="hidden md-visible">Visible only on medium screens and up</div>
+<div class="sm-grid-cols-1 md-grid-cols-2 grid-cols-3">Responsive grid</div>
+
+<!-- ========================================
+     END OF EXAMPLES
+     ======================================== -->

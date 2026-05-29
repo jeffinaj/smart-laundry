@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Login - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="auth-card">
+    <h1>Login</h1>
+    <p>Enter your account details to access the dashboard.</p>
+    <form id="login-form" class="auth-form" action="/login" method="post" autocomplete="on">
+      <label>
+        Email
+        <input type="email" name="email" id="email" value="{{ form_data.email if form_data and form_data.email else '' }}" required autocomplete="email" />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" id="password" required minlength="6" autocomplete="current-password" />
+      </label>
+      <button type="submit" class="button">Login</button>
+      <p class="form-note">Need an account? <a href="/signup">Sign up here</a>.</p>
+      <p class="form-note">Admin user? <a href="/admin/login">Login here</a>.</p>
+      {% if message %}
+      <p class="form-message {{ 'success' if message_type == 'success' else '' }}">{{ message }}</p>
+      {% else %}
+      <p class="form-message"></p>
+      {% endif %}
+    </form>
+  </section>
+{% endblock %}

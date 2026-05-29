@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Checkout - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="payment-page">
+    <div class="checkout-container">
+      <div class="payment-summary card">
+        <h2>Order Summary</h2>
+        <div id="order-summary-content" class="summary-content">
+          <div class="summary-item">
+            <span>Order ID</span>
+            <strong id="order-id-value">Loading...</strong>
+          </div>
+          <div class="summary-item">
+            <span>Laundry Type</span>
+            <strong id="order-type">Loading...</strong>
+          </div>
+          <div class="summary-item">
+            <span>Cloth Quantity</span>
+            <strong id="order-quantity">Loading...</strong>
+          </div>
+          <div class="summary-item">
+            <span>Weight</span>
+            <strong id="order-weight">Loading...</strong>
+          </div>
+          <div class="summary-item">
+            <span>Delivery Type</span>
+            <strong id="order-delivery">Loading...</strong>
+          </div>
+          <div class="summary-item">
+            <span>Payment Status</span>
+            <strong id="order-payment-status" class="status-pending">Loading...</strong>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="summary-total">
+          <strong>Total Amount:</strong>
+          <span id="total-amount">₹0.00</span>
+        </div>
+        <div class="divider"></div>
+        <div class="summary-item">
+          <span>Discount</span>
+          <strong id="order-discount">₹0.00</strong>
+        </div>
+        <div class="summary-item">
+          <span>Final Amount</span>
+          <strong id="order-final-amount">₹0.00</strong>
+        </div>
+
+        <div class="divider"></div>
+        <div class="tracking-card">
+          <h3>Tracking Snapshot</h3>
+          <div id="tracking-status" class="tracking-status-box">
+            <p>Loading status...</p>
+          </div>
+          <div id="tracking-history" class="tracking-history-box hidden">
+            <h4>Recent updates</h4>
+            <ul id="tracking-history-list"></ul>
+          </div>
+          <div id="notification-panel" class="notification-panel hidden">
+            <h4>Latest notification</h4>
+            <p id="notification-message"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-methods card">
+        <h2>Select Payment Method</h2>
+        <form id="payment-form" class="payment-form">
+          <input type="hidden" id="order-id" value="{{ order_id }}" />
+
+          <div class="method-option">
+            <input type="radio" id="card-option" name="payment_method" value="card" checked />
+            <label for="card-option" class="method-label">
+              <div class="method-icon">💳</div>
+              <div class="method-details">
+                <h3>Credit / Debit Card</h3>
+                <p>Pay securely using your card.</p>
+              </div>
+            </label>
+          </div>
+
+          <div class="method-option">
+            <input type="radio" id="upi-option" name="payment_method" value="upi" />
+            <label for="upi-option" class="method-label">
+              <div class="method-icon">📱</div>
+              <div class="method-details">
+                <h3>UPI Payment</h3>
+                <p>Pay instantly via UPI.</p>
+              </div>
+            </label>
+          </div>
+
+          <div class="method-option">
+            <input type="radio" id="cod-option" name="payment_method" value="cod" />
+            <label for="cod-option" class="method-label">
+              <div class="method-icon">📦</div>
+              <div class="method-details">
+                <h3>Cash on Delivery</h3>
+                <p>Pay when your laundry is delivered.</p>
+              </div>
+            </label>
+          </div>
+
+          <div id="upi-fields" class="upi-fields hidden">
+            <label>
+              UPI ID (e.g., username@upi)
+              <input type="text" id="upi-id" name="upi_id" class="form-control" placeholder="yourname@upi" />
+            </label>
+            <p class="form-note">We don't store your UPI ID. Enter a test UPI ID for demo.</p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="button">Pay Now</button>
+          </div>
+          <p id="payment-message" class="form-message"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="/static/js/payment.js"></script>
+{% endblock %}

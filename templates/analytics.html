@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}Analytics - Smart Laundry{% endblock %}
+
+{% block content %}
+<div class="analytics-page">
+  <div class="analytics-header">
+    <div>
+      <h1>📊 Analytics & Reports</h1>
+      <p>Track revenue, orders, and service performance</p>
+    </div>
+    <button id="export-report" class="button button-secondary">📥 Export Report</button>
+  </div>
+
+  <!-- Summary Statistics -->
+  <div class="analytics-summary">
+    <div class="summary-card">
+      <div class="summary-icon">💰</div>
+      <div class="summary-content">
+        <p class="summary-label">Total Revenue</p>
+        <h3 id="stat-revenue">$0.00</h3>
+        <span class="summary-meta">Completed payments</span>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon">📦</div>
+      <div class="summary-content">
+        <p class="summary-label">Total Bookings</p>
+        <h3 id="stat-bookings">0</h3>
+        <span class="summary-meta">All time</span>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon">✅</div>
+      <div class="summary-content">
+        <p class="summary-label">Completed Orders</p>
+        <h3 id="stat-completed">0</h3>
+        <span class="summary-meta">Delivered</span>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon">🔄</div>
+      <div class="summary-content">
+        <p class="summary-label">Active Orders</p>
+        <h3 id="stat-active">0</h3>
+        <span class="summary-meta">In progress</span>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon">👥</div>
+      <div class="summary-content">
+        <p class="summary-label">Total Users</p>
+        <h3 id="stat-users">0</h3>
+        <span class="summary-meta">Customers</span>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon">💵</div>
+      <div class="summary-content">
+        <p class="summary-label">Avg Order Value</p>
+        <h3 id="stat-avg-order">$0.00</h3>
+        <span class="summary-meta">Per booking</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Grid -->
+  <div class="charts-grid">
+    <!-- Revenue Chart -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>Monthly Revenue</h2>
+        <p>Last 12 months of revenue</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Orders Chart -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>Monthly Orders</h2>
+        <p>Completed vs Total</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="ordersChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Bookings Trend -->
+    <div class="chart-card chart-card-full">
+      <div class="chart-header">
+        <h2>Bookings Trend</h2>
+        <p>Regular vs Express bookings</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="bookingsTrendChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Top Services -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>Top Services</h2>
+        <p>Most popular services</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="servicesChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Service Average Prices -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>Service Pricing</h2>
+        <p>Average price per service</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="pricingChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script src="/static/js/analytics.js"></script>
+{% endblock %}

@@ -1,0 +1,65 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #eff4ff;
+  color: #0f172a;
+}
+* { box-sizing: border-box; }
+body, html, #root { min-height: 100%; margin: 0; }
+body { background: radial-gradient(circle at top left, #5b7cff 0%, #0b1120 45%, #020b1f 100%); color: #f8fafc; }
+button, input, select, textarea { font: inherit; }
+button { border: none; cursor: pointer; }
+.app-shell { display: flex; min-height: 100vh; }
+.sidebar { width: 260px; padding: 32px 24px; background: rgba(6, 20, 45, 0.96); display: flex; flex-direction: column; gap: 24px; }
+.sidebar .brand { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.04em; }
+.sidebar nav { display: flex; flex-direction: column; gap: 10px; }
+.sidebar a { color: #e2e8f0; text-decoration: none; padding: 12px 16px; border-radius: 14px; background: rgba(255,255,255,0.05); transition: transform .16s ease, background .16s ease; }
+.sidebar a.active, .sidebar a:hover { background: rgba(103, 125, 255, 0.18); transform: translateX(2px); }
+.logout-button { background: #ff6b6b; color: white; padding: 12px 16px; border-radius: 12px; font-weight: 700; }
+.app-content { flex: 1; padding: 32px; }
+.loader { color: #fff; font-size: 1.2rem; text-align: center; margin-top: 120px; }
+.auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.auth-card { width: min(520px, 100%); background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; padding: 34px; }
+.auth-card h1 { margin-top: 0; font-size: 2rem; }
+.auth-card label { display: block; margin-bottom: 16px; color: #cbd5e1; }
+.auth-card input { width: 100%; padding: 12px 14px; margin-top: 8px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: #f8fafc; }
+.auth-card button { width: 100%; margin-top: 8px; background: linear-gradient(135deg, #6574ff, #7c3aed); color: white; padding: 14px; border-radius: 16px; }
+.auth-card .alert { background: rgba(255, 111, 111, 0.16); padding: 12px 14px; border-radius: 14px; color: #ffe4e6; margin-bottom: 16px; }
+.auth-card p { color: #cbd5e1; }
+.page-header, .dashboard-hero { display: flex; justify-content: space-between; align-items: start; gap: 24px; margin-bottom: 28px; }
+.page-header h1, .dashboard-hero h1 { margin: 0; font-size: clamp(2rem, 2.25vw, 2.7rem); }
+.page-header p, .dashboard-hero p { margin: 8px 0 0; color: #cbd5e1; }
+.price-summary { min-width: 250px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 22px; padding: 20px; }
+.card { border-radius: 24px; padding: 24px; background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+.cards-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-bottom: 28px; }
+.card.primary { background: linear-gradient(135deg, rgba(30, 57, 255, 0.9), rgba(77, 208, 255, 0.18)); }
+.card.accent { background: linear-gradient(135deg, rgba(120, 45, 255, 0.9), rgba(255, 121, 198, 0.18)); }
+.card div { font-size: 2.5rem; margin-top: 22px; font-weight: 700; }
+.section { margin-top: 30px; }
+.list-box { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.list-box li { padding: 18px 20px; background: rgba(255,255,255,0.08); border-radius: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.list-box li.unread { border: 1px solid #7c3aed; }
+.list-box li span { color: #cbd5e1; font-size: 0.95rem; }
+.list-box .meta { color: #cbd5e1; font-size: 0.95rem; }
+.link-button { padding: 10px 16px; border-radius: 14px; background: #7c3aed; color: white; text-decoration: none; font-weight: 700; }
+.booking-form, .booking-form label { display: grid; gap: 10px; }
+.booking-form { grid-template-columns: 1fr 1fr; gap: 18px; }
+.booking-form label { color: #cbd5e1; }
+.booking-form input, .booking-form select, .booking-form textarea { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.08); color: #f8fafc; }
+.booking-form textarea { min-height: 140px; resize: vertical; }
+.booking-form button { grid-column: span 2; padding: 16px; background: linear-gradient(135deg, #ff7a18, #8f5de8); color: white; border-radius: 18px; font-weight: 700; margin-top: 14px; }
+.booking-page .success-box { background: rgba(56, 189, 248, 0.16); padding: 16px; border-radius: 16px; margin-bottom: 16px; }
+.alert { background: rgba(246, 72, 72, 0.15); padding: 14px; border-radius: 16px; margin-bottom: 16px; }
+.payments-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 20px; }
+.payment-card { background: rgba(255,255,255,0.08); padding: 22px; border-radius: 22px; border: 1px solid rgba(255,255,255,0.1); }
+.payment-card .amount { font-size: 2rem; font-weight: 700; margin: 16px 0; }
+.progress-steps { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+.step { padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.08); color: #cbd5e1; min-width: 160px; text-align: center; }
+.step.completed { background: linear-gradient(135deg, #7c3aed, #22d3ee); color: white; }
+.timeline { margin-top: 22px; }
+.timeline-item { padding: 16px 20px; border-radius: 18px; background: rgba(255,255,255,0.06); margin-bottom: 12px; }
+.timeline-status { font-weight: 700; margin-bottom: 6px; }
+.timeline-time { color: #cbd5e1; }
+.success-box, .section-header, .page-header .price-summary { border: 1px solid rgba(255,255,255,0.14); }
+@media (max-width: 1080px) { .cards-grid, .payments-grid, .booking-form { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .app-shell { flex-direction: column; } .sidebar { width: 100%; flex-direction: row; align-items: center; justify-content: space-between; padding: 18px; } .sidebar nav { flex-direction: row; flex-wrap: wrap; } .sidebar a { padding: 10px 12px; } .app-content { padding: 20px; } }

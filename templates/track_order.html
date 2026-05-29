@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Track Order - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="track-page">
+    <div class="track-card">
+      <h1>Order Tracking</h1>
+      <p>Enter your order ID to see the current laundry status and progress.</p>
+      <form id="track-form" class="booking-form">
+        <label>
+          Order ID
+          <input type="text" name="order_id" id="tracking-id" class="form-control" placeholder="Example: 102" required />
+        </label>
+        <div class="form-actions">
+          <button type="button" id="track-button" data-track-order class="button">Track order</button>
+          <p id="track-message" class="booking-message"></p>
+        </div>
+      </form>
+
+      <div class="tracking-result" id="tracking-result" hidden>
+        <div class="tracking-summary">
+          <div>
+            <p class="eyebrow">Order details</p>
+            <h2 id="track-order-id">#0</h2>
+          </div>
+          <div class="tracking-info">
+            <span id="track-order-type">Type: -</span>
+            <span id="track-order-qty">Qty: -</span>
+            <span id="track-order-price">Total: -</span>
+          </div>
+        </div>
+
+        <div class="progress-bar-wrapper">
+          <div class="progress-line" id="progress-line"></div>
+          <div class="progress-steps" id="progress-steps"></div>
+        </div>
+
+        <div class="tracking-details">
+          <div><strong>Status:</strong> <span id="track-order-status">-</span></div>
+          <div><strong>Pickup date:</strong> <span id="track-pickup-date">-</span></div>
+          <div><strong>Address:</strong> <span id="track-pickup-address">-</span></div>
+          <div><strong>Express:</strong> <span id="track-express">-</span></div>
+        </div>
+        <div class="tracking-history" id="tracking-history" hidden>
+          <h3>Tracking history</h3>
+          <ul id="tracking-history-list" class="tracking-history-list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

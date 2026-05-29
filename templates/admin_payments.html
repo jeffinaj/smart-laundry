@@ -1,0 +1,18 @@
+{% extends "admin_base.html" %}
+{% block admin_title %}Payments{% endblock %}
+{% block admin_content %}
+  <section class="card">
+    <div class="card-header">
+      <h3>Payments</h3>
+      <input type="search" id="payment-search" placeholder="Search payments..." />
+    </div>
+    <div class="table-scroll">
+      <table class="admin-table">
+        <thead>
+          <tr><th>Payment ID</th><th>Order ID</th><th>User</th><th>Amount</th><th>Status</th><th>Method</th><th>Date</th></tr>
+        </thead>
+        <tbody id="payments-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}

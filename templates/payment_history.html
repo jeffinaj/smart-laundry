@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Payment History - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="payment-history-page">
+    <div class="history-container">
+      <div class="history-header">
+        <div>
+          <p class="eyebrow">Transactions</p>
+          <h1>Payment History</h1>
+          <p>View all your laundry service payments and transaction details.</p>
+        </div>
+      </div>
+
+      <div class="history-stats">
+        <div class="stat-card">
+          <p class="stat-label">Total Paid</p>
+          <h2 id="stat-total-paid">$0.00</h2>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Completed Payments</p>
+          <h2 id="stat-completed">0</h2>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Pending Payments</p>
+          <h2 id="stat-pending">0</h2>
+        </div>
+      </div>
+
+      <div class="history-table card">
+        <div class="table-header">
+          <h2>Payment Transactions</h2>
+          <p>Complete list of all payments made for your orders.</p>
+        </div>
+        <div class="table-scroll">
+          <table class="payments-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Service</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="payments-table-body">
+              <tr>
+                <td colspan="7" class="text-center">Loading payment history...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="history-footer">
+        <p>All transactions are securely processed and recorded. For any concerns about your payments, please <a href="/dashboard">contact support</a>.</p>
+      </div>
+    </div>
+  </section>
+  <script src="/static/js/payment.js"></script>
+{% endblock %}

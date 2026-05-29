@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Smart Laundry{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    {% if session.user_id or session.admin_id %}
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">🧺</div>
+        <div class="sidebar-title">Smart Laundry</div>
+      </div>
+      <nav class="sidebar-nav">
+        {% if session.admin_id %}
+          <li class="sidebar-nav-item">
+            <a href="/admin/dashboard" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📊</span>
+              <span class="sidebar-nav-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="/analytics" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📈</span>
+              <span class="sidebar-nav-text">Analytics</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="/admin/dashboard" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">👥</span>
+              <span class="sidebar-nav-text">Users</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="/admin/dashboard" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📦</span>
+              <span class="sidebar-nav-text">Orders</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="sidebar-nav-item">
+            <a href="/dashboard" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">🏠</span>
+              <span class="sidebar-nav-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="/book" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📦</span>
+              <span class="sidebar-nav-text">Book Laundry</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="/track" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">🔍</span>
+              <span class="sidebar-nav-text">Track Order</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="/payment-history" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">💳</span>
+              <span class="sidebar-nav-text">Payments</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="/notifications" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">🔔</span>
+              <span class="sidebar-nav-text">Notifications</span>
+            </a>
+          </li>
+        {% endif %}
+      </nav>
+    </aside>
+    <div class="sidebar-overlay" data-sidebar-overlay></div>
+    {% endif %}
+
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="/">Smart Laundry</a>
+        <nav class="top-nav">
+          <a href="/track" class="button button-secondary">Track Order</a>
+          {% if session.admin_id %}
+          <a href="/admin/dashboard" class="button button-secondary">Admin Dashboard</a>
+          <button id="dark-mode-toggle" class="button button-secondary" data-dark-mode-toggle aria-label="Toggle dark mode">🌙</button>
+          <form action="/logout" method="post" style="display:inline; margin:0;">
+            <button type="submit" class="button button-secondary">Logout</button>
+          </form>
+          {% elif session.user_id %}
+          <a href="/book" class="button button-secondary">Book Laundry</a>
+          <a href="/payment-history" class="button button-secondary">Payments</a>
+          <a id="notification-bell" href="/notifications" class="button button-secondary notification-link">
+            <span>🔔 Notifications</span>
+            <span id="notification-badge" class="badge" style="display: none;"></span>
+          </a>
+          <button id="dark-mode-toggle" class="button button-secondary" data-dark-mode-toggle aria-label="Toggle dark mode">🌙</button>
+          <form action="/logout" method="post" style="display:inline; margin:0;">
+            <button type="submit" class="button button-secondary">Logout</button>
+          </form>
+          {% else %}
+          <a href="/login" class="button">Login</a>
+          <a href="/signup" class="button button-secondary">Sign Up</a>
+          <button id="dark-mode-toggle" class="button button-secondary" data-dark-mode-toggle aria-label="Toggle dark mode">🌙</button>
+          {% endif %}
+        </nav>
+      </header>
+
+      <!-- Notification Center (dropdown) -->
+      {% if session.user_id %}
+      <div id="notification-center" class="notification-center">
+        <div id="notification-center-content" class="notification-center-content">
+          <div class="loading">Loading...</div>
+        </div>
+      </div>
+      {% endif %}
+
+      <main class="page-content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    {% if session.user_id or session.admin_id %}
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" data-sidebar-toggle aria-label="Toggle menu">☰</button>
+    {% endif %}
+
+    <script src="/static/js/advanced.js"></script>
+    <script src="/static/js/notifications.js"></script>
+    <script src="/static/js/scripts.js"></script>
+  </body>
+</html>

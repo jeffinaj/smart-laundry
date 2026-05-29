@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="notifications-page">
+  <div class="notifications-container">
+    <div class="notifications-header">
+      <div>
+        <h1>📬 Notifications</h1>
+        <p>Manage alerts, order updates, and delivery notices from one place.</p>
+      </div>
+      <button id="mark-all-read-btn" class="button button-secondary">Mark All as Read</button>
+    </div>
+
+    <div class="notifications-search-bar">
+      <input id="notification-search" type="search" class="form-control" placeholder="Search notifications..." aria-label="Search notifications" />
+    </div>
+
+    <div class="notifications-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="unread">Unread</button>
+      <button class="filter-btn" data-filter="order_placed">Orders</button>
+      <button class="filter-btn" data-filter="delivery">Delivery</button>
+    </div>
+
+    <div id="notifications-list" class="notifications-list">
+      <div class="loading">Loading notifications...</div>
+    </div>
+
+    <div id="empty-state" class="empty-state" style="display: none;">
+      <div class="empty-icon">📭</div>
+      <p>No notifications yet</p>
+      <small>You'll receive notifications about your orders here</small>
+    </div>
+  </div>
+</div>
+{% endblock %}

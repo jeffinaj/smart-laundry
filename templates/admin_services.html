@@ -1,0 +1,13 @@
+{% extends "admin_base.html" %}
+{% block admin_title %}Services{% endblock %}
+{% block admin_content %}
+  <section class="card">
+    <div class="card-header"><h3>Services</h3></div>
+    <div class="table-scroll">
+      <table class="admin-table">
+        <thead><tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Active</th></tr></thead>
+        <tbody id="services-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "admin_base.html" %}
+{% block admin_title %}Orders{% endblock %}
+{% block admin_content %}
+  <section class="card">
+    <div class="card-header">
+      <h3>Orders</h3>
+      <div class="filters">
+        <input type="search" id="order-search" placeholder="Search orders..." />
+        <select id="order-filter"><option value="">All</option><option>Pickup Scheduled</option><option>Washing</option><option>Drying</option><option>Ironing</option><option>Delivered</option></select>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table class="admin-table">
+        <thead>
+          <tr><th>ID</th><th>Customer</th><th>Service</th><th>Qty</th><th>Price</th><th>Status</th><th>Action</th></tr>
+        </thead>
+        <tbody id="orders-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}

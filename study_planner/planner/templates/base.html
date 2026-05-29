@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Planner</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">Study Planner</div>
+      <nav>
+        <a href="/">Dashboard</a>
+        <a href="/tasks/">Tasks</a>
+        <a href="/tasks/add/">Add Task</a>
+      </nav>
+      <div class="spacer"></div>
+      <div class="theme-toggle">
+        <button id="toggleTheme">Dark Mode</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        {% if user.is_authenticated %}
+          <div>Welcome, {{ user.username }}</div>
+          <div>
+            <a href="/logout/">Logout</a>
+          </div>
+        {% else %}
+          <a href="/login/">Login</a> | <a href="/register/">Register</a>
+        {% endif %}
+      </header>
+
+      <section class="content">{% block content %}{% endblock %}</section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/static/js/scripts.js"></script>
+</body>
+</html>

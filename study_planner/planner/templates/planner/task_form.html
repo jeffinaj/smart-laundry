@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="form-box">
+    {% if task %}<h2>Edit Task</h2>{% else %}<h2>Add Task</h2>{% endif %}
+    <form method="post">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+    {% if task %}
+      <form method="post" action="/tasks/{{ task.id }}/delete/">{% csrf_token %}
+        <button type="submit" class="danger">Delete</button>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}

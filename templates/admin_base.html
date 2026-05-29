@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Admin - Smart Laundry{% endblock %}
+{% block content %}
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="brand">Smart Laundry Admin</div>
+      <nav class="admin-nav">
+        <a href="/admin/dashboard" class="nav-item">Dashboard</a>
+        <a href="/admin/users" class="nav-item">Users</a>
+        <a href="/admin/orders" class="nav-item">Orders</a>
+        <a href="/admin/payments" class="nav-item">Payments</a>
+        <a href="/admin/tracking" class="nav-item">Tracking</a>
+        <a href="/admin/notifications" class="nav-item">Notifications</a>
+        <a href="/admin/workers" class="nav-item">Workers</a>
+        <a href="/admin/services" class="nav-item">Services</a>
+        <a href="/admin/reports" class="nav-item">Reports</a>
+        <a href="/admin/settings" class="nav-item">Settings</a>
+        <a href="/admin/logout" class="nav-item">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h2 class="admin-page-title">{% block admin_title %}Admin Console{% endblock %}</h2>
+        <div class="admin-actions"></div>
+      </div>
+
+      <div class="admin-content">{% block admin_content %}{% endblock %}</div>
+    </main>
+  </div>
+
+  <link rel="stylesheet" href="/static/css/admin.css" />
+  <script src="/static/js/admin.js"></script>
+{% endblock %}

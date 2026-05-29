@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Invoice - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="invoice-page">
+    <div class="invoice-container card">
+      <div class="invoice-header">
+        <div class="invoice-title">
+          <h1>Invoice</h1>
+          <p id="invoice-number">Order #{{ order.id }}</p>
+        </div>
+        <button onclick="window.print()" class="button button-secondary">Print Invoice</button>
+      </div>
+
+      <div class="invoice-grid">
+        <div class="invoice-section">
+          <h3>From</h3>
+          <p><strong>Smart Laundry Services</strong></p>
+          <p>Professional Laundry Management</p>
+        </div>
+        <div class="invoice-section">
+          <h3>Bill To</h3>
+          <p><strong>{{ order.user_name or session.user_name }}</strong></p>
+          <p>{{ order.user_email or session.user_email }}</p>
+          <p>{{ order.user_phone or session.user_phone }}</p>
+        </div>
+      </div>
+
+      <div class="invoice-details">
+        <div class="detail-row">
+          <span>Order Date</span>
+          <span>{{ order.created_at.strftime('%Y-%m-%d') }}</span>
+        </div>
+        <div class="detail-row">
+          <span>Pickup Date</span>
+          <span>{{ order.pickup_date }}</span>
+        </div>
+        <div class="detail-row">
+          <span>Payment Status</span>
+          <span class="status-badge" id="payment-status-badge">{{ order.payment_status or 'Pending' }}</span>
+        </div>
+      </div>
+
+      <table class="invoice-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ order.booking_type }} Service</td>
+            <td>{{ order.quantity }}</td>
+            <td id="unit-price">${{ "%.2f"|format(order.price / order.quantity) }}</td>
+            <td>${{ "%.2f"|format(order.price) }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="invoice-totals">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span>${{ "%.2f"|format(order.price) }}</span>
+        </div>
+        {% if order.express_delivery %}
+        <div class="total-row">
+          <span>Express Delivery (+25%)</span>
+          <span>${{ "%.2f"|format(order.price * 0.25) }}</span>
+        </div>
+        {% endif %}
+        <div class="total-row final">
+          <strong>Total</strong>
+          <strong>${{ "%.2f"|format(order.price) }}</strong>
+        </div>
+      </div>
+
+      <div class="invoice-footer">
+        <h4>Payment Information</h4>
+        <div class="footer-content">
+          <div>
+            <strong>Method:</strong> {{ order.payment_method or 'Not Paid' }}
+          </div>
+          <div>
+            <strong>Status:</strong> {{ order.payment_status or 'Pending' }}
+          </div>
+          {% if order.transaction_id %}
+          <div>
+            <strong>Transaction ID:</strong> {{ order.transaction_id }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="invoice-notes">
+        <p><strong>Pickup Address:</strong></p>
+        <p>{{ order.pickup_address }}</p>
+      </div>
+
+      <div class="invoice-actions">
+        <a href="/payment-history" class="button button-secondary">Back to Payment History</a>
+        <a href="/dashboard" class="button">Back to Dashboard</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

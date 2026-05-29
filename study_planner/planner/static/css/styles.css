@@ -1,0 +1,30 @@
+:root{
+  --bg1: linear-gradient(135deg,#f6d365 0%,#fda085 100%);
+  --card:#ffffff;
+  --muted:#666;
+}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Arial}
+body{margin:0;background:var(--bg1);min-height:100vh}
+.app{display:flex;min-height:100vh}
+.sidebar{width:220px;background:rgba(255,255,255,0.07);padding:20px;display:flex;flex-direction:column}
+.sidebar .brand{font-weight:700;margin-bottom:10px}
+.sidebar nav a{display:block;color:#fff;text-decoration:none;padding:8px;border-radius:6px}
+.sidebar nav a:hover{background:rgba(255,255,255,0.08)}
+.main{flex:1;padding:20px}
+.topbar{display:flex;justify-content:space-between;align-items:center;color:#fff;margin-bottom:20px}
+.cards{display:flex;gap:12px;margin-bottom:12px}
+.card{background:var(--card);padding:18px;border-radius:12px;min-width:140px}
+.progress{background:rgba(255,255,255,0.12);border-radius:10px;padding:4px;margin-bottom:16px}
+.progress-bar{background:linear-gradient(90deg,#6a11cb,#2575fc);color:#fff;padding:8px;border-radius:8px;text-align:center}
+.task-list{list-style:none;padding:0}
+.task-item{background:rgba(255,255,255,0.9);padding:10px;border-radius:8px;margin-bottom:8px}
+.auth-box,.form-box{background:#fff;padding:20px;border-radius:10px;max-width:480px}
+input,select,textarea,button{font:inherit}
+button{background:#2575fc;color:#fff;padding:8px 12px;border-radius:8px;border:0}
+.danger{background:#ff5a5f}
+.toast{position:fixed;right:20px;bottom:20px;background:#111;color:#fff;padding:10px 14px;border-radius:8px}
+.hidden{display:none}
+@media(max-width:800px){.sidebar{display:none}.app{flex-direction:column}}
+
+/* Dark mode */
+body.dark{background:linear-gradient(135deg,#2b5876,#4e4376)}

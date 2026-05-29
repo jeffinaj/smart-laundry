@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="dashboard">
+    <div class="cards">
+      <div class="card">Welcome {{ user.username }}</div>
+      <div class="card">Total Tasks: {{ total_tasks }}</div>
+      <div class="card">Completed: {{ completed_count }}</div>
+      <div class="card">Upcoming: {{ upcoming|length }}</div>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar" style="width: {{ progress }}%">{{ progress }}%</div>
+    </div>
+
+    <h3>Recent Tasks</h3>
+    <ul class="task-list">
+      {% for t in tasks %}
+        <li class="task-item {{ t.status }}">
+          <strong>{{ t.task_title }}</strong> — {{ t.subject }}
+          <div class="meta">{{ t.deadline }}</div>
+        </li>
+      {% empty %}
+        <li>No tasks yet</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

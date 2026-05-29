@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="dashboard-app">
+    <div class="dashboard-top">
+      <div class="dashboard-header">
+        <div>
+          <p class="eyebrow">Dashboard</p>
+          <h1>Welcome back, <span id="user-greeting">loading...</span></h1>
+          <p class="dashboard-subtitle">View active orders, track laundry status, and stay on top of your daily operations.</p>
+        </div>
+        <button id="refresh-dashboard" class="button button-secondary">Refresh data</button>
+      </div>
+
+      <div class="dashboard-stats-grid">
+        <article class="stat-card">
+          <p class="stat-label">Active orders</p>
+          <h2 id="stat-active-orders">0</h2>
+          <span>Orders currently in process</span>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Completed today</p>
+          <h2 id="stat-completed">0</h2>
+          <span>Finished laundry batches</span>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Pending pickup</p>
+          <h2 id="stat-pickup">0</h2>
+          <span>Orders waiting for customers</span>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">New notifications</p>
+          <h2 id="stat-notifications">0</h2>
+          <span>Unread alerts in your queue</span>
+        </article>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <section class="orders-panel card">
+        <div class="panel-header">
+          <div>
+            <h2>Active orders</h2>
+            <p>Latest orders currently being processed.</p>
+          </div>
+          <span class="status-pill">Updated now</span>
+        </div>
+        <div class="orders-table-wrapper">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Customer</th>
+                <th>Items</th>
+                <th>Status</th>
+                <th>Due</th>
+              </tr>
+            </thead>
+            <tbody id="orders-list">
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="card notifications-card">
+          <div class="panel-header">
+            <div>
+              <h2>Notifications</h2>
+              <p>Recent alerts for your laundry operations.</p>
+            </div>
+          </div>
+          <ul class="notification-list" id="notification-list">
+          </ul>
+        </div>
+
+        <div class="card status-card">
+          <div class="panel-header">
+            <div>
+              <h2>Laundry Status</h2>
+              <p>Overall process health and progress.</p>
+            </div>
+          </div>
+          <div class="status-grid" id="status-grid">
+          </div>
+        </div>
+
+        <div class="card quick-actions">
+          <div class="panel-header">
+            <div>
+              <h2>Quick Actions</h2>
+              <p>Manage your account and payments.</p>
+            </div>
+          </div>
+          <div class="action-links">
+            <a href="/book" class="action-link">📦 Book Laundry</a>
+            <a href="/my-bookings" class="action-link">📚 My Bookings</a>
+            <a href="/payment-history" class="action-link">💳 Payment History</a>
+            <a href="/track" class="action-link">🔍 Track Order</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="dashboard-bottom">
+      <section class="card activity-card">
+        <div class="panel-header">
+          <div>
+            <h2>Recent activity</h2>
+            <p>Track recent actions for orders and customers.</p>
+          </div>
+        </div>
+        <ul class="activity-list" id="activity-list"></ul>
+      </section>
+    </div>
+  </section>
+{% endblock %}

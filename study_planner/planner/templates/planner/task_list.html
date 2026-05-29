@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="task-list-page">
+    <h2>Your Tasks</h2>
+    <input id="search" placeholder="Search tasks...">
+    <select id="subjectFilter">
+      <option value="">All subjects</option>
+    </select>
+    <ul class="task-list">
+      {% for t in tasks %}
+        <li>
+          <a href="/tasks/{{ t.id }}/edit/">{{ t.task_title }}</a>
+          <span class="meta">{{ t.subject }} • {{ t.priority }} • {{ t.status }}</span>
+        </li>
+      {% empty %}
+        <li>No tasks yet</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

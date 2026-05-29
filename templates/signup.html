@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Sign Up - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="auth-card">
+    <h1>Create an account</h1>
+    <p>Use your email to register and manage laundry tasks securely.</p>
+    <form id="signup-form" class="auth-form" action="/signup" method="post" autocomplete="on">
+      <label>
+        Full name
+        <input type="text" name="name" id="name" value="{{ form_data.name if form_data and form_data.name else '' }}" required autocomplete="name" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" id="email" value="{{ form_data.email if form_data and form_data.email else '' }}" required autocomplete="email" />
+      </label>
+      <label>
+        Phone number
+        <input type="tel" name="phone" id="phone" value="{{ form_data.phone if form_data and form_data.phone else '' }}" required minlength="8" autocomplete="tel" />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" id="password" required minlength="6" autocomplete="new-password" />
+      </label>
+      <button type="submit" class="button">Sign Up</button>
+      <p class="form-note">Already registered? <a href="/login">Login here</a>.</p>
+      {% if message %}
+      <p class="form-message {{ 'success' if message_type == 'success' else '' }}">{{ message }}</p>
+      {% else %}
+      <p class="form-message"></p>
+      {% endif %}
+    </form>
+  </section>
+{% endblock %}

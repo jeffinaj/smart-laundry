@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Admin Login - Smart Laundry{% endblock %}
+{% block content %}
+  <section class="auth-card">
+    <h1>Admin Sign In</h1>
+    <p>Use your admin credentials to manage users, orders, and services.</p>
+    <form id="admin-login-form" class="auth-form" action="{{ url_for('admin_login') }}" method="post" novalidate>
+      <label>
+        Email
+        <input type="email" name="email" id="admin-email" required />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" id="admin-password" required minlength="6" />
+      </label>
+      <button type="submit" class="button">Login</button>
+      {% if message %}
+      <p class="form-message {{ message_type }}">{{ message }}</p>
+      {% else %}
+      <p class="form-note">Not an admin? <a href="/login">Return to user login</a>.</p>
+      {% endif %}
+      <p id="admin-login-message" class="form-message"></p>
+    </form>
+  </section>
+{% endblock %}

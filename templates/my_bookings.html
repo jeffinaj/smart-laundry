@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}My Bookings - Smart Laundry{% endblock %}
+{% block content %}
+<section class="dashboard-app my-bookings-app">
+  <div class="dashboard-top">
+    <div class="dashboard-header">
+      <div>
+        <p class="eyebrow">My Bookings</p>
+        <h1>Bookings for {{ user_name or 'You' }}</h1>
+        <p class="dashboard-subtitle">View and manage your bookings. Update pickup details or cancel before processing.</p>
+      </div>
+      <button id="refresh-bookings" class="button button-secondary">Refresh</button>
+    </div>
+  </div>
+
+  <div class="bookings-grid">
+    <aside class="card filter-panel">
+      <h3>Filters</h3>
+      <input id="booking-search" placeholder="Search by Order ID" />
+      <select id="booking-filter-status">
+        <option value="">All statuses</option>
+        <option>Pickup Scheduled</option>
+        <option>Collected</option>
+        <option>Washing</option>
+        <option>Drying</option>
+        <option>Ironing</option>
+        <option>Out for Delivery</option>
+        <option>Delivered</option>
+        <option>Cancelled</option>
+      </select>
+    </aside>
+
+    <main class="card bookings-list">
+      <div class="bookings-cards" id="bookings-cards"></div>
+      <div class="table-scroll">
+        <table class="admin-table bookings-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Type</th>
+              <th>Qty</th>
+              <th>Weight</th>
+              <th>Pickup</th>
+              <th>Delivery</th>
+              <th>Discount</th>
+              <th>Total</th>
+              <th>Final</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th>Booking Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bookings-table-body"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Edit modal / inline form -->
+  <div id="booking-edit-modal" class="modal" style="display:none;">
+    <div class="modal-content card">
+      <h3>Edit Booking <span id="edit-booking-id"></span></h3>
+      <form id="booking-edit-form">
+        <label>Pickup Date<input type="date" id="edit-pickup-date" required /></label>
+        <label>Pickup Address<textarea id="edit-pickup-address" required></textarea></label>
+        <label>Laundry Type<input id="edit-laundry-type" /></label>
+        <label>Quantity<input type="number" id="edit-quantity" min="1" /></label>
+        <div class="form-actions">
+          <button type="submit" class="button">Save</button>
+          <button type="button" id="booking-cancel-edit" class="button button-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<link rel="stylesheet" href="/static/css/admin.css" />
+<script src="/static/js/my_bookings.js"></script>
+{% endblock %}
